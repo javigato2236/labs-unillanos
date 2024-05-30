@@ -25,12 +25,52 @@ header h1{
 header img{
     width: 60px;
     height: 60px;
-    padding: 5px;
-    
-    
-    
-    
-    
-    
+    padding: 5px; 
 }
+
+.contenedor_principal{
+    display: grid;
+
+
+}
+
+.contenedor_inicios{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:30px;
+    /* con la propiedad gap y el numero de pixeles ponemos espacios entre los
+    blokes de un modo mas facil pero esto solo funciona si usamos display gird y grid-template-columns: repeat(5, 1fr); donde
+    escogemos el nuemro de colummnas y las fracciones que van a usar cada colummna*/
+    margin: 30px;
+
+}
+
+
+.inicios{
+    border-radius: 10px;
+    min-height: 200px;
+    font-weight: bold;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    transition: all 300ms; /*colocamos el tiempo en milisegundos para la trancicion en este caso es la de agrandar o reducir una imagen*/
+}
+
+.inicios:hover{
+    transform: scale(0.90);/*colocamos el tamño de escala de la imagen cuanmdo pasamos el cursor por ensima de ella*/
+
+}
+
+
+    
+
+
+
+
+
+
+
+    
 
