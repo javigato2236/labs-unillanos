@@ -1,0 +1,6 @@
+.contenedor_ini_sesiones{
+    display: grid;
+    place-content:center;
+    min-height: 50vh;
+}
+
