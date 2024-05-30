@@ -7,6 +7,11 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/iniciar_sesion")
+def ini_sesion():
+    return render_template("iniciar_sesion.html")
+
+
 
 
 
