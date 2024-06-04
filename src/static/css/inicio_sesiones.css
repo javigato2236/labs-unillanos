@@ -2,5 +2,22 @@
     display: grid;
     place-content:center;
     min-height: 50vh;
+    border:solid 1px black;
+    width: 600px;
+    left: 370px;
+    top: 100px;
+    
+    position: relative;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
