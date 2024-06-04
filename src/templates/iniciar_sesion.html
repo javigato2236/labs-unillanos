@@ -1,36 +1,41 @@
 {%extends 'layout.html'%}
 {%block pestaña%}inicio de sesion{%endblock%}
 {%block body%}
+
 <header>
-    <h1>iniciar sesion</h1>
-    <img src="../static/assets/img/logo_unillanos.png" alt="">
+    <header>
+        <h1>iniciar sesion</h1>
+    </header>
+
 </header>
 
-
-
-    <div class="contenedor_ini_sesiones">
-        <div class="textos">
-            <h1>Laboratorio de química</h1>
-            <form action="">
-
-                <div>
-                    <label for="#">correo electronico</label>
-                    <input type="text">
-                </div>
-
-                <div>
-                    <label for="#">contraseña</label>
-                    <input type="password">
-                </div>
-
-                <button type="submit">ingresar</button>
-
-            </form>
-
+<div class="contenedor_ini_sesiones">
+    <form action="">
+        <div>
+            <label  for="usuario">usuario</label>
+            <input type="text">
         </div>
-    </div>
+
+        <div>
+            <label for="contraseña">contraseña</label>
+            <input type="password">
+        </div>
+        
+        <button type="submit">ingresar</button>
+        
+
+        <a href="{{url_for('index')}}">regresar</a>
 
 
+
+    </form>
+</div>
+ 
+
+
+
+
+    
 
 
 
