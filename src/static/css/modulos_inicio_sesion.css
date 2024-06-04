@@ -66,12 +66,26 @@ header img{
 
 
 
+.textos{
+    position: relative;
+    top: 70px;
+    
+
+}
+
+
+
 .textos h2{
     color:white;
     height: 100%;
     display: flex;
     justify-content:center;
     margin-top: 65px;
+    -webkit-text-stroke-width:1px;
+    -webkit-text-stroke-color: black;
+
+    
+    
 }
 
 
