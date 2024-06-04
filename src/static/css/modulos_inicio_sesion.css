@@ -4,8 +4,11 @@
     box-sizing: border-box;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;}
+    
 
-
+.body{
+    background-color:whitesmoke;
+}
 header{
     background-color: rgb(207, 3, 3);
     align-items: center;
@@ -68,7 +71,7 @@ header img{
 
 .textos{
     position: relative;
-    top: 70px;
+    top: 52px;
     
 
 }

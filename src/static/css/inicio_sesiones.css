@@ -1,23 +1,53 @@
 .contenedor_ini_sesiones{
+    
+    
     display: grid;
     place-content:center;
-    min-height: 50vh;
-    border:solid 1px black;
-    width: 600px;
-    left: 370px;
-    top: 100px;
-    
     position: relative;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    height: 510px;
+    margin:20px ;
+    background-color:whitesmoke;
+
+     
 }
+/*min-height:100vh; esta configuarcion es la ams indicada para ecntar un div
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;*/
+
+.logo2{
+    width:150px;
+    position: relative;
+    bottom:100px;
+    left:5px;
+}
+
+
+.ingreso_correo{
+    display: grid;
+    position: relative;
+    bottom:50px;
+
+}
+
+.ingreso_password{
+    display: grid;
+    position: relative;
+    bottom:30px;
+    
+
+}
+
+div button{
+    position: relative;
+    left: 30px;
+
+}
+
+
+
+
+
+
 

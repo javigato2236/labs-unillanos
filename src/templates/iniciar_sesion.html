@@ -2,34 +2,48 @@
 {%block pestaña%}inicio de sesion{%endblock%}
 {%block body%}
 
+
+
 <header>
     <header>
-        <h1>iniciar sesion</h1>
+        <h1>iniciar sesión</h1>
     </header>
 
 </header>
 
 <div class="contenedor_ini_sesiones">
-    <form action="">
-        <div>
-            <label  for="usuario">usuario</label>
-            <input type="text">
+    <div>
+        <img src="../static/assets/img/logo_unillanos.png" alt="" class="logo2">
+        
+    </div>
+   
+    <form action="#">
+
+        <div class="ingreso_correo">
+            <label  for="correo">correo electrónico</label>
+            <input type="email">
         </div>
 
-        <div>
+        <div class="ingreso_password">
             <label for="contraseña">contraseña</label>
             <input type="password">
         </div>
         
         <button type="submit">ingresar</button>
+
+        
         
 
-        <a href="{{url_for('index')}}">regresar</a>
+        <a href="{{url_for('index')}}"><button>regresar</button></a>
 
 
 
     </form>
+
+
 </div>
+
+
  
 
 
