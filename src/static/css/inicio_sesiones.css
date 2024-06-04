@@ -28,9 +28,10 @@ justify-content: center;*/
     display: grid;
     position: relative;
     bottom:50px;
-    right:20px;
+    right:20px;    
 
 }
+
 
 .ingreso_password{
     display: grid;
@@ -48,6 +49,7 @@ div button{
     border-radius: 2px;
     padding:1px;
     cursor: pointer;
+    
 
 }
 
