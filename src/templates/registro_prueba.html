@@ -1,12 +1,12 @@
 {%extends 'layout.html'%}
-{%block pestaña%}inicio de sesion{%endblock%}
+{%block pestaña%}registro{%endblock%}
 {%block body%}
 
 
 
 <header>
     <header>
-        <h1>iniciar sesión</h1>
+        <h1>registro prueba</h1>
     </header>
 
 </header>
@@ -17,7 +17,7 @@
         
     </div>
    
-    <form action="{{url_for('login')}}" method="post">
+    <form action="{{url_for('registro_log')}}" method="post">
 
         <div class="ingreso_correo">
             <label  for="correo_electronico">correo electrónico</label>
@@ -29,7 +29,7 @@
             <input type="password" name="password">
         </div>
         
-        <button type="submit">ingresar</button>
+        <button type="submit">registrar</button>
 
         
         
