@@ -1,7 +1,7 @@
 from flask import Flask,render_template, request, session
 from werkzeug.security import check_password_hash, generate_password_hash
-import funciones
-from otro import Usu
+from funciones import Funsion
+from Usuarios import Users
 
 
 app = Flask(__name__)
@@ -19,14 +19,13 @@ def ini_sesion():
 def registro():
     return render_template("registro_prueba.html")
 
+
+
 @app.route("/login", methods = ["POST", "GET"])
 def login():
     if request.method =="POST" and "correo_electronico" in request.form and "password" in request.form:
-        usuario = Usu(request.form["correo_electronico"],request.form["password"])
-        registro = funciones.Iniciar_Sesion(usuario.correo)
-        #correo = request.form["correo_electronico"]
-        #password = request.form["password"]
-        #registro = funciones.Iniciar_Sesion(correo)
+        usuario = Users(request.form["correo_electronico"],request.form["password"])
+        registro = Funsion.Iniciar_Sesion(usuario.correo)
         if registro:
             if check_password_hash(registro[2],usuario.password):
                 session["login"] = True
@@ -40,14 +39,15 @@ def login():
     else:
         render_template("iniciar_sesion.html")   
 
+
+
+
 @app.route("/registro_login", methods = ["POST", "GET"])
 def registro_log():
     if request.method  == 'POST':
-        usuario = Usu(request.form["correo_electronico"],generate_password_hash(request.form["password"]))
-        #email = request.form["correo_electronico"]
-        #password = generate_password_hash(request.form["password"])
+        usuario = Users(request.form["correo_electronico"],generate_password_hash(request.form["password"]))
         try:
-            funciones.registrar_usuario(usuario.correo,usuario.password)
+            Funsion.registrar_usuario(usuario.correo,usuario.password)
         except:
             return render_template("index.html")
         finally:

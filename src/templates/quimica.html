@@ -1,11 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>quimica</h1>
-</body>
-</html>
+{%extends 'layout.html'%}
+{%block pestaña%}registro{%endblock%}
+{%block body%}
+
+
+
+<header>
+    <header>
+        <h1>laboratorio de quimica</h1>
+    </header>
+
+</header>
+
+<div class="contenedor_ini_sesiones">
+    <div>
+        <img src="../static/assets/img/logo_unillanos.png" alt="" class="logo2">
+        
+    </div>
+</div>
+
+<div class="contenedor_principal_sesion_iniciada">
+
+    <div class="contenedor_inicios_sesion_iniciada">
+
+        <a href="#">
+            <div class="inicios_sesion_iniciada" style="background-image: url(../static/assets/img/quimica.png);">
+                <div class="textos">
+                    <h2>ver registros</h2>
+
+                </div>
+
+            </div>
+        </a>
+       
+    </div>
+
+</div>
+{%endblock%}
