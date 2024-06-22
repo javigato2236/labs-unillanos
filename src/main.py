@@ -1,4 +1,4 @@
-from flask import Flask,render_template, request, session
+from flask import Flask,render_template, request, session,redirect, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 from funciones import Funsion
 from Usuarios import Users
@@ -19,6 +19,14 @@ def ini_sesion():
 def registro():
     return render_template("registro_prueba.html")
 
+@app.route("/ver_registros1")
+def registro1():
+    return render_template("registros1.html")
+
+@app.route("/quimica")
+def quimica():
+    return render_template("quimica.html")
+
 
 
 @app.route("/login", methods = ["POST", "GET"])
@@ -37,7 +45,13 @@ def login():
         else:
             return render_template("iniciar_sesion.html")
     else:
-        render_template("iniciar_sesion.html")   
+        render_template("iniciar_sesion.html")  
+
+@app.route("/logout")        
+def logout_sesion():
+    session.clear()
+    return redirect((url_for('index')))
+ 
 
 
 
