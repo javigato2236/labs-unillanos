@@ -26,26 +26,14 @@ header h1{
 
 .contenedor_principal_sesion_iniciada{
     display: grid;
-    top: 200px;
-    
-
-
-}
-
-.contenedor_inicios_sesion_iniciada{
-    display:grid;
+    top: 400px;
     grid-template-columns: repeat(10, 1fr);
-    place-items:center;
-    gap: 20px;
-    margin: 20px;
-    position: relative;
-    bottom: 300px;
-    
-    
-    
-    
-}
+    gap:70px;
+    padding-left:50px;
+    position: absolute;
+    align-items: center;
 
+}
 
 .inicios_sesion_iniciada{
     height:150px;
@@ -54,20 +42,17 @@ header h1{
     overflow: hidden;
     background-size: cover;
     background-position: center center;
-    transition: all 300ms; 
     
 }
 
-.inicios_sesion_iniciada:hover{
-    transform: scale(0.90);}
+.contenedor_inicios_sesion_iniciada{
+    transition: all 300ms;
 
-.textos_sesion_iniciada1{
-    position:relative;
-    top: 75px;
-    right:165px;
-    
-    
-    
-    
-     
 }
+
+.contenedor_inicios_sesion_iniciada:hover{
+    transform: scale(0.90);
+    
+}
+
+
