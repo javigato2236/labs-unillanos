@@ -1,7 +1,8 @@
-from flask import Flask,render_template, request, session,redirect, url_for
+from flask import Flask,render_template, request, session,redirect, url_for,flash
 from werkzeug.security import check_password_hash, generate_password_hash
 from funciones import Funsion
 from Usuarios import Users
+
 
 
 app = Flask(__name__)
@@ -47,6 +48,24 @@ def login():
     else:
         render_template("iniciar_sesion.html")  
 
+
+@app.route("/recuperar_contraseña")
+def recuperar_contraseña():
+    return render_template("reestablecer_contraseña.html")
+
+@app.route("/reset_password", methods = ["POST", "GET"])
+def reset_pss():
+    if request.method == 'POST':
+        usuario = Users(request.form["correo_electronico"])
+        email = Funsion.enviar_email(usuario.correo)
+        if email != None:
+            email = Funsion.enviar_email(email)
+            return render_template("index.html")
+        else:
+            return render_template("index.html")
+
+
+
 @app.route("/logout")        
 def logout_sesion():
     session.clear()
@@ -67,15 +86,9 @@ def registro_log():
         finally:
             return render_template("index.html")    
         
+
         
-       
         
-
-
-
-
-
-
 
 
 if __name__=="__main__":

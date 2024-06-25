@@ -6,7 +6,7 @@
 
 <header>
     <header>
-        <h1>Iniciar sesión</h1>
+        <h1>Reestablecer contraseña</h1>
     </header>
 
 </header>
@@ -17,39 +17,26 @@
         
     </div>
    
-    <form action="{{url_for('login')}}" method="post">
+    <form action="#">
 
         <div class="ingreso_correo">
             <label  for="correo_electronico">correo electrónico</label>
             <input type="email" name="correo_electronico">
         </div>
 
-        <div class="ingreso_password">
-            <label for="password">contraseña</label>
-            <input type="password" name="password">
-        </div>
-        
-        <button type="submit">ingresar</button>
-
+        <button type="submit">enviar</button>
 
         <a class="segundo_boton" href="{{url_for('index')}}">regresar</a>
-
-        <a class="olvido_password" href="{{url_for('recuperar_contraseña')}}">¿ olvido su contraseña ?</a>
-
-
-
+        
     </form>
-
 
 </div>
 
+<div class="tex_reestablecer_contraseña">
+    <h2>por favor ingrese el correo electrónico con el que se registro</h2>
 
- 
+</div>
 
-
-
-
-    
 
 
 
