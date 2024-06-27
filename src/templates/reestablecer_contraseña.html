@@ -1,6 +1,7 @@
 {%extends 'layout.html'%}
-{%block pestaña%}inicio de sesion{%endblock%}
+{%block pestaña%}recuperar contraseña{%endblock%}
 {%block body%}
+
 
 
 
@@ -17,7 +18,7 @@
         
     </div>
    
-    <form action="#">
+    <form action="{{url_for('reset_password')}}" method="post">
 
         <div class="ingreso_correo">
             <label  for="correo_electronico">correo electrónico</label>
@@ -34,10 +35,32 @@
 
 <div class="tex_reestablecer_contraseña">
     <h2>por favor ingrese el correo electrónico con el que se registro</h2>
+    
 
 </div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    
+     {% for category, message in messages %}
+
+      {% if category == 'warning' %}
+
+        {{ message }}
+
+      {%endif%}
+      
+     {% endfor %}
+    
+  {% endif %}
+{% endwith %}
+
+
 
 
 
 
 {%endblock%}
+
+
+

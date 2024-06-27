@@ -1,12 +1,20 @@
 from flask import Flask,render_template, request, session,redirect, url_for,flash
 from werkzeug.security import check_password_hash, generate_password_hash
-from funciones import Funsion
+import funciones
 from Usuarios import Users
+import alertas_mensages
+
+
+
+
+
+
 
 
 
 app = Flask(__name__)
 app.secret_key = "abcd123"
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -33,8 +41,8 @@ def quimica():
 @app.route("/login", methods = ["POST", "GET"])
 def login():
     if request.method =="POST" and "correo_electronico" in request.form and "password" in request.form:
-        usuario = Users(request.form["correo_electronico"],request.form["password"])
-        registro = Funsion.Iniciar_Sesion(usuario.correo)
+        usuario =Users(request.form["correo_electronico"],request.form["password"])
+        registro = funciones.Iniciar_Sesion(usuario.correo)
         if registro:
             if check_password_hash(registro[2],usuario.password):
                 session["login"] = True
@@ -54,15 +62,20 @@ def recuperar_contraseña():
     return render_template("reestablecer_contraseña.html")
 
 @app.route("/reset_password", methods = ["POST", "GET"])
-def reset_pss():
-    if request.method == 'POST':
-        usuario = Users(request.form["correo_electronico"])
-        email = Funsion.enviar_email(usuario.correo)
-        if email != None:
-            email = Funsion.enviar_email(email)
-            return render_template("index.html")
-        else:
-            return render_template("index.html")
+def reset_password():
+   
+
+       
+       
+
+
+
+@app.route("/ventana_reset_password")
+def ventana_reset_password():
+    return render_template("ventana_reestablecer_contraseña.html")
+
+
+            
 
 
 
@@ -80,7 +93,7 @@ def registro_log():
     if request.method  == 'POST':
         usuario = Users(request.form["correo_electronico"],generate_password_hash(request.form["password"]))
         try:
-            Funsion.registrar_usuario(usuario.correo,usuario.password)
+            funciones.registrar_usuario(usuario.correo,usuario.password)
         except:
             return render_template("index.html")
         finally:
