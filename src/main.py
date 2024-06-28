@@ -12,7 +12,7 @@ import alertas_mensages
 
 
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder="./templates")
 app.secret_key = "abcd123"
 
 @app.route("/")
@@ -36,6 +36,75 @@ def registro1():
 def quimica():
     return render_template("quimica.html")
 
+@app.route("/ResetPassword")
+def ResetPassword():
+    return render_template("reestablecer_contraseña.html")
+
+
+
+@app.route("/RecuperarPassword", methods = ["POST", "GET"])
+def RecuperarPassword():
+    if request.method  == 'POST':
+        email = request.form["correo_electronico"]
+        email = funciones.verificar_correo(email)
+        if email != None:
+            funciones.enviar_email(email)
+            flash(alertas_mensages.Mensaje1(),alertas_mensages.CategoriaDeMensaje())
+            return redirect(url_for('ResetPassword'))
+        else:
+            flash(alertas_mensages.mensaje3(),alertas_mensages.CategoriaDeMensaje())
+            return redirect(url_for('ResetPassword'))
+
+        
+
+        
+    # if request.method  == 'POST':
+    #         email = request.form["correo_electronico"]
+    #         email = funciones.verificar_correo(email)
+    #         if email != None:
+    #             funciones.enviar_email(email)
+    #             flash(alertas_mensages.Mensaje1(),alertas_mensages.CategoriaDeMensaje())
+    #             return redirect(url_for('ResetPassword'))
+    #         else:
+    #             return redirect(url_for('index'))
+    # else:
+    #     pass
+    
+
+
+
+            
+  
+           
+
+
+
+
+    #         return redirect(url_for('ResetPassword'))
+    #     elif email != None:
+    #         funciones.verificar_correo(email)
+    #         return redirect(url_for('ResetPassword'))
+    #     elif email == None:
+    #         flash(alertas_mensages.mensaje4(),alertas_mensages.CategoriaDeMensaje())
+    #         return redirect(url_for('ResetPassword'))
+    #     elif email != None:
+    #         flash(alertas_mensages.Mensaje1(),alertas_mensages.CategoriaDeMensaje())
+            
+    #         return redirect(url_for('ResetPassword'))
+    #     else:
+    #         return redirect(url_for('ResetPassword'))
+    # else:
+    #     pass
+
+
+
+
+
+
+
+
+
+
 
 
 @app.route("/login", methods = ["POST", "GET"])
@@ -57,36 +126,11 @@ def login():
         render_template("iniciar_sesion.html")  
 
 
-@app.route("/recuperar_contraseña")
-def recuperar_contraseña():
-    return render_template("reestablecer_contraseña.html")
-
-@app.route("/reset_password", methods = ["POST", "GET"])
-def reset_password():
-   
-
-       
-       
-
-
-
-@app.route("/ventana_reset_password")
-def ventana_reset_password():
-    return render_template("ventana_reestablecer_contraseña.html")
-
-
-            
-
-
-
 @app.route("/logout")        
 def logout_sesion():
     session.clear()
     return redirect((url_for('index')))
  
-
-
-
 
 @app.route("/registro_login", methods = ["POST", "GET"])
 def registro_log():

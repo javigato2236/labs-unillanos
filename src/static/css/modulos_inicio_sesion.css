@@ -97,6 +97,21 @@ header img{
     position: relative;
 }
 
+.tex_mensaje{
+    text-align:center;
+    top: 420px;
+    position: absolute;
+    right:750px;
+
+    
+}
+
+.tex_mensaje2{
+    color:rgb(207, 3, 3);
+    font-size: 13px;
+
+}
+
 
 
     

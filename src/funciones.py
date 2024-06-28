@@ -24,7 +24,7 @@ def registrar_usuario(email,password):
 def verificar_correo(correo):
     conexion = iniciar_conexion()
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT FROM ingreso_quimica WHERE correo_electronico=%s",(correo))
+        cursor.execute("SELECT  correo_electronico  FROM ingreso_quimica WHERE correo_electronico=%s",(correo))
         regitro = cursor.fetchone()
         return regitro
         

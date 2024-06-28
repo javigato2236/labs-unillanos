@@ -1,11 +1,14 @@
-def dfdfd():
+def CategoriaDeMensaje():
     return 'warning'
 
-def f():
-    return "el correo indicado no se encuentra registrado"
+def mensaje4():
+    return "por favor ingrese un correo"
 
-def j():
+def mensaje3():
+    return "¡el correo indicado no se encuentra registrado!"
+
+def Mensaje2():
     return "por favor ingresa un correo"
 
-def h():
-    return "se ha enviado un correo electronico a su correo apra recuperar su contraseña"
+def Mensaje1():
+    return "se ha enviado un correo electronico a su correo Para recuperar su contraseña"
