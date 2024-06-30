@@ -3,6 +3,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 import funciones
 from Usuarios import Users
 import alertas_mensages
+from itsdangerous import SignatureExpired
 
 
 
@@ -36,9 +37,19 @@ def registro1():
 def quimica():
     return render_template("quimica.html")
 
-@app.route("/ResetPassword")
-def ResetPassword():
+@app.route("/ResetPassword/<token>", methods = ["POST", "GET"] )
+def ResetPassword(token):
+    try:
+        email = funciones.TOKEN(token)
+        return render_template("ingreso_nueva_contraseña.html", email = email )
+    except: SignatureExpired
+    return "lo sentimos el token espíro"
+    
+
+@app.route("/ VentanaResetPassword")
+def VentanaResetPassword():
     return render_template("reestablecer_contraseña.html")
+
 
 
 
@@ -50,63 +61,30 @@ def RecuperarPassword():
         if email != None:
             funciones.enviar_email(email)
             flash(alertas_mensages.Mensaje1(),alertas_mensages.CategoriaDeMensaje())
-            return redirect(url_for('ResetPassword'))
+            return redirect(url_for('VentanaResetPassword'))
         else:
             flash(alertas_mensages.mensaje3(),alertas_mensages.CategoriaDeMensaje())
-            return redirect(url_for('ResetPassword'))
+            return redirect(url_for('VentanaResetPassword'))
+        
+
+@app.route("/cambio_contraseña", methods = ["POST", "GET"])
+def cambio_contra():
+    if request.method == "POST":
+        email = request.form["id"]
+        NuevaPassword = request.form["nueva_password"]
+        ConfirmarPassword = request.form["confirmar_password"]
+        if NuevaPassword == ConfirmarPassword:
+            NuevaPassword = generate_password_hash(request.form["nueva_password"])
+            funciones.cambio_contraseña(NuevaPassword,email)
+            return redirect(url_for('inicio'))
+        else:
+            return redirect(url_for('reset_pass'))
+    else:
+        return redirect(url_for('reset_pass'))
 
         
 
         
-    # if request.method  == 'POST':
-    #         email = request.form["correo_electronico"]
-    #         email = funciones.verificar_correo(email)
-    #         if email != None:
-    #             funciones.enviar_email(email)
-    #             flash(alertas_mensages.Mensaje1(),alertas_mensages.CategoriaDeMensaje())
-    #             return redirect(url_for('ResetPassword'))
-    #         else:
-    #             return redirect(url_for('index'))
-    # else:
-    #     pass
-    
-
-
-
-            
-  
-           
-
-
-
-
-    #         return redirect(url_for('ResetPassword'))
-    #     elif email != None:
-    #         funciones.verificar_correo(email)
-    #         return redirect(url_for('ResetPassword'))
-    #     elif email == None:
-    #         flash(alertas_mensages.mensaje4(),alertas_mensages.CategoriaDeMensaje())
-    #         return redirect(url_for('ResetPassword'))
-    #     elif email != None:
-    #         flash(alertas_mensages.Mensaje1(),alertas_mensages.CategoriaDeMensaje())
-            
-    #         return redirect(url_for('ResetPassword'))
-    #     else:
-    #         return redirect(url_for('ResetPassword'))
-    # else:
-    #     pass
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route("/login", methods = ["POST", "GET"])
 def login():
     if request.method =="POST" and "correo_electronico" in request.form and "password" in request.form:

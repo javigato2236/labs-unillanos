@@ -1,0 +1,67 @@
+{%extends 'layout.html'%}
+{%block pestaña%}inicio de sesion{%endblock%}
+{%block body%}
+
+<header>
+    <header>
+        <h1>Iniciar sesión</h1>
+    </header>
+
+</header>
+
+<div class="contenedor_ini_sesiones">
+    <div>
+        <img src="../static/assets/img/logo_unillanos.png" alt="" class="logo2">
+        
+    </div>
+
+    <form action="{{url_for('cambio_contra', id = email)}}" method="post">
+
+        <h1>por favor ingrese su nueva contraseña</h1>
+
+       
+        <input type="text" name="id" value="{{email}}">
+
+
+        <label for="nueva_password">nueva contraseña</label>
+        <input type="password" name="nueva_password" id="nueva_password">
+        
+        <label for="confirmar_password">confirmar contraseña</label>
+        <input type="password" name="confirmar_password" id="confirmar_password">
+
+        <button type="submit">enviar</button>
+        
+
+
+    </form>
+   
+    
+
+</div>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    
+{% for category, message in messages %}
+
+{% if category == 'warning'%}
+<div class="tex_mensaje">
+    <h2 class="tex_mensaje2">{{ message }}</h2>
+
+</div>
+
+
+{%endif%}
+      
+{% endfor %}
+    
+{% endif %}
+{% endwith %}
+
+
+<h2 class="tex_reestablecer_contraseña">por favor ingrese el correo con el que se registro</h2>
+
+
+
+
+
+{%endblock%}

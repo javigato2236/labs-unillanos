@@ -27,10 +27,17 @@ def verificar_correo(correo):
         cursor.execute("SELECT  correo_electronico  FROM ingreso_quimica WHERE correo_electronico=%s",(correo))
         regitro = cursor.fetchone()
         return regitro
+    
+def TOKEN(token):
+    token_expired = URLSafeTimedSerializer(app.config['SECRET_KEY'])
+    email = token_expired.loads(token, salt='email-confirmacion-salt',max_age=20)  
+    return email
+
+    
         
 def enviar_email(email):
     confirm_serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
-    confir_url = url_for('ventana_reset_password',token = confirm_serializer.dumps(email,salt='email-confirmacion-salt'), _external =True)
+    confir_url = url_for('ResetPassword',token = confirm_serializer.dumps(email,salt='email-confirmacion-salt'), _external =True)
     remitente = "javieraugustosanchezmartinez@gmail.com"
     destinatario = email
     mensaje = f"holaaaa\n{confir_url}"
@@ -43,6 +50,13 @@ def enviar_email(email):
     server.starttls()
     server.login(remitente,"ifjuomcczvhwupmf")
     server.sendmail(remitente,destinatario,email.as_string())
+
+def cambio_contraseña(NuevaPassword,email):
+    conexion = iniciar_conexion()
+    with conexion.cursor() as cursor:
+        cursor.execute("UPDATE usuarios SET password =%s WHERE correo_electrónico =%s",(NuevaPassword,email))
+        conexion.commit()
+        conexion.close()
 
 
     
